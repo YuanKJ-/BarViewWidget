@@ -19,8 +19,6 @@
 
     <dimen name="arc_outside_radius">802dp</dimen>
 
-    <item name="shine_width" format="float" type="dimen">9</item>
-
     <item name="circle_blank_angle" format="float" type="dimen">60</item>
     <item name="arc_blank_angle" format="float" type="dimen">290</item>
 

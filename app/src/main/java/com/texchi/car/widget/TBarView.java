@@ -11,17 +11,13 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.SweepGradient;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ykj on 16/9/6.
@@ -42,10 +38,6 @@ public class TBarView extends View {
     protected float BASIC_OUTSIDE_STROKE_WIDTH;
     //the white line radius 120px
     protected float BASIC_OUTSIDE_RADIUS;
-    //the outermost shine line radius = BASIC_OUTSIDE_RADIUS = 120px
-    protected float BASIC_INSIDE_RADIUS;
-    //the shine width 18px / 2 = 9
-    protected float SHINE_WIDTH;
     //the vertices of circle left margin screen right
     protected float CIRCLE_MARGIN_RIGHT;
     protected float VALUE_TEXT_SIZE;
@@ -86,16 +78,9 @@ public class TBarView extends View {
     protected Paint basicOutsidePaint;
     protected float basicOutsideRadius;
     protected RectF basicOutsideOval; //shape and size
-    protected SweepGradient basicOutsideShader;
 
     //black background
     protected Paint backgroundPaint;
-
-    protected List<Paint> shinePaints = new ArrayList<Paint>();
-    protected List<Float> shineRadius = new ArrayList<Float>();
-    protected List<RectF> shineOvals = new ArrayList<RectF>();
-    protected List<Integer> shineColors = new ArrayList<Integer>();
-
 
     protected TextPaint valueTextPaint;
     protected TextPaint timeTextPaint;
@@ -121,7 +106,6 @@ public class TBarView extends View {
         CIRCLE_MARGIN_RIGHT = getResources().getDimension(R.dimen.circle_margin_right);
         BASIC_OUTSIDE_STROKE_WIDTH = getResources().getDimension(R.dimen.circle_outside_stroke_width);
         BASIC_OUTSIDE_RADIUS = CIRCLE_RADIUS;
-        BASIC_INSIDE_RADIUS = BASIC_OUTSIDE_RADIUS;
         VALUE_TEXT_SIZE = getResources().getDimension(R.dimen.value_text_size);
         TIME_TEXT_SIZE = getResources().getDimension(R.dimen.time_text_size);
         VALUE_TEXT_MARGIN_RIGHT = getResources().getDimension(R.dimen.value_text_center_margin_right);
@@ -142,9 +126,6 @@ public class TBarView extends View {
 
         getResources().getValue(R.dimen.arc_blank_angle, outValue, true);
         ARC_BLANK_ANGLE = outValue.getFloat();
-
-        getResources().getValue(R.dimen.shine_width, outValue, true);
-        SHINE_WIDTH = outValue.getFloat();
     }
 
     /**
@@ -156,38 +137,12 @@ public class TBarView extends View {
         backgroundPaint.setColor(getResources().getColor(android.R.color.black));
 
         basicOutsidePaint = new Paint(defaultPaint);
+        basicOutsidePaint.setColor(getResources().getColor(R.color.value_text_color));
         //set width
         basicOutsidePaint.setStrokeWidth(BASIC_OUTSIDE_STROKE_WIDTH);
         //actual radius = design radius + stroke width / 2;
         basicOutsideRadius = BASIC_OUTSIDE_RADIUS + BASIC_OUTSIDE_STROKE_WIDTH / 2;
 
-        parseColor((int)SHINE_WIDTH);
-        for (int i = 0; i < (int)SHINE_WIDTH; i++) {
-            Paint shinePaint = new Paint(defaultPaint);
-            shinePaint.setAntiAlias(false);
-            shinePaint.setStrokeWidth(2);
-            shinePaint.setColor(shineColors.get(i));
-            float radius = BASIC_INSIDE_RADIUS - i * 2;
-            shinePaints.add(shinePaint);
-            shineRadius.add(radius);
-        }
-    }
-
-    /** gradient color */
-    private void parseColor(int step){
-        shineColors.clear();
-        int oldR = 8 ,oldG =214,oldB =166;
-        int newR = 0 ,newG =12, newB =9;
-        int oldColor = Color.rgb(oldR,oldG,oldB);  //start of color
-        int newColor = Color.rgb(newR,newG,newB);  //end of color
-
-        for(int i = 1 ; i <= step; i++) {
-            int r = oldR + (newR - oldR) * i / step;
-            int g = oldG + (newG - oldG) * i / step;
-            int b = oldB + (newB - oldB) * i / step;
-            int tempColor = Color.rgb(r, g, b);
-            shineColors.add(tempColor);
-        }
     }
 
     protected void initTextPaint(){
@@ -243,9 +198,6 @@ public class TBarView extends View {
         //background
         canvas.drawArc(basicOutsideOval, START_ANGLE, 360, false, backgroundPaint);
 
-        for(int i = 0; i < shinePaints.size(); i++) {
-            canvas.drawArc(shineOvals.get(i), START_ANGLE, SWEEP_ANGLE, false, shinePaints.get(i));
-        }
         canvas.drawArc(basicOutsideOval, START_ANGLE, SWEEP_ANGLE, false, basicOutsidePaint);
 
         float valueWidth = getTextWidth(speed, valueTextPaint);
@@ -294,22 +246,6 @@ public class TBarView extends View {
         if (basicOutsideOval == null) {
             basicOutsideOval = new RectF(centerPoint.x - basicOutsideRadius, centerPoint.y - basicOutsideRadius,
                     centerPoint.x + basicOutsideRadius, centerPoint.y + basicOutsideRadius);  //用于定义的圆弧的形状和大小的界限
-
-            int startColor = getResources().getColor(R.color.basic_outside_gradient_color);
-            int endColor = Color.WHITE;
-            int[] colors = new int[]{startColor, endColor, startColor};
-            float[] positions = new float[]{45f/360, 233f/360, 1};
-            basicOutsideShader = new SweepGradient(centerPoint.x,centerPoint.y, colors, positions);
-            basicOutsidePaint.setShader(basicOutsideShader);
-        }
-
-
-        if(shineOvals.size() == 0){
-            for(int i = 0; i < shineRadius.size(); i++) {
-                RectF innerShadowOval = new RectF(centerPoint.x - shineRadius.get(i), centerPoint.y - shineRadius.get(i),
-                        centerPoint.x + shineRadius.get(i), centerPoint.y + shineRadius.get(i));
-                shineOvals.add(innerShadowOval);
-            }
         }
 
         if (picRectF == null) {
@@ -353,12 +289,8 @@ public class TBarView extends View {
         START_ANGLE = 180 - SWEEP_ANGLE / 2;
 
         BASIC_OUTSIDE_RADIUS = CIRCLE_RADIUS + (ARC_RADIUS - CIRCLE_RADIUS) * fraction;
-        BASIC_INSIDE_RADIUS = BASIC_OUTSIDE_RADIUS;
 
         basicOutsideOval = null;
-        shineRadius.clear();
-        shinePaints.clear();
-        shineOvals.clear();
         centerPoint = null;
         initBasicPaint();
         initOval();
