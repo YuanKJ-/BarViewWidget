@@ -6,6 +6,7 @@
     <dimen name="value_text_size">72sp</dimen>
     <dimen name="time_text_size">40sp</dimen>
     <dimen name="value_text_center_margin_right">88dp</dimen>
+    <dimen name="value_text_padding_center_y">8dp</dimen>
     <dimen name="time_margin_top">16dp</dimen>
     <dimen name="remain_distance_margin_bottom">40dp</dimen>
     <dimen name="remain_time_margin_bottom">16dp</dimen>

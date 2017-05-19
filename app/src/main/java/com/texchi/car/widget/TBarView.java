@@ -15,6 +15,7 @@ import android.graphics.SweepGradient;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -51,6 +52,8 @@ public class TBarView extends View {
     protected float TIME_TEXT_SIZE;
     //the value text center margin screen right 88px
     protected float VALUE_TEXT_MARGIN_RIGHT;
+    //the value text "baseline" padding center y
+    protected float VALUE_TEXT_PADDING_CENTER_Y;
     //the time text margin top with value text 16px
     protected float TIME_MARGIN_TOP;
 
@@ -122,6 +125,7 @@ public class TBarView extends View {
         VALUE_TEXT_SIZE = getResources().getDimension(R.dimen.value_text_size);
         TIME_TEXT_SIZE = getResources().getDimension(R.dimen.time_text_size);
         VALUE_TEXT_MARGIN_RIGHT = getResources().getDimension(R.dimen.value_text_center_margin_right);
+        VALUE_TEXT_PADDING_CENTER_Y = getResources().getDimension(R.dimen.value_text_padding_center_y);
         TIME_MARGIN_TOP = getResources().getDimension(R.dimen.time_margin_top);
         REMAIN_DISTANCE_MARGIN_BOTTOM = getResources().getDimension(R.dimen.remain_distance_margin_bottom);
         REMAIN_TIME_MARGIN_BOTTOM = getResources().getDimension(R.dimen.remain_time_margin_bottom);
@@ -246,10 +250,12 @@ public class TBarView extends View {
 
         float valueWidth = getTextWidth(speed, valueTextPaint);
         int textCenterX = (int) (widthSize - VALUE_TEXT_MARGIN_RIGHT);
-        canvas.drawText(speed, textCenterX, centerPoint.y, valueTextPaint);
+        int textY = (int)(centerPoint.y + VALUE_TEXT_PADDING_CENTER_Y);
+        canvas.drawText(speed, textCenterX, textY, valueTextPaint);
 
         float timeHeight = getTextHeight(time, timeTextPaint);
-        canvas.drawText(time, textCenterX, centerPoint.y + (int) (timeHeight) + TIME_MARGIN_TOP, timeTextPaint);
+        int timeY = (int)(textY + timeHeight + TIME_MARGIN_TOP);
+        canvas.drawText(time, textCenterX, timeY, timeTextPaint);
 
         if (navigating && !animating) {
             float remainDistanceHeight = getTextHeight(remainDistance, remainDistanceTextPaint);
@@ -307,8 +313,11 @@ public class TBarView extends View {
         }
 
         if (picRectF == null) {
-            picRectF = new RectF(widthSize - VALUE_TEXT_MARGIN_RIGHT - NAV_ICON_SIZE / 2, NEXT_DISTANCE_MARGIN_TOP,
-                    widthSize - VALUE_TEXT_MARGIN_RIGHT + NAV_ICON_SIZE / 2, NEXT_DISTANCE_MARGIN_TOP + NAV_ICON_SIZE);
+            float left = widthSize - VALUE_TEXT_MARGIN_RIGHT - NAV_ICON_SIZE / 2;
+            float top = NEXT_DISTANCE_MARGIN_TOP;
+            float right = widthSize - VALUE_TEXT_MARGIN_RIGHT + NAV_ICON_SIZE / 2;
+            float bottom = NEXT_DISTANCE_MARGIN_TOP + NAV_ICON_SIZE;
+            picRectF = new RectF(left, top, right, bottom);
         }
     }
 
