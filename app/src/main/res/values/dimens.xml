@@ -1,0 +1,31 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="value_text_size">72sp</dimen>
+    <dimen name="time_text_size">40sp</dimen>
+    <dimen name="value_text_center_margin_right">88dp</dimen>
+    <dimen name="time_margin_top">16dp</dimen>
+    <dimen name="remain_distance_margin_bottom">40dp</dimen>
+    <dimen name="remain_time_margin_bottom">16dp</dimen>
+    <dimen name="next_distance_margin_top">14dp</dimen>
+    <dimen name="nav_icon_size">88dp</dimen>
+
+    <dimen name="circle_margin_right">208dp</dimen>
+    <dimen name="circle_outside_radius">120dp</dimen>
+    <dimen name="circle_outside_stroke_width">2dp</dimen>
+
+    <dimen name="arc_outside_radius">802dp</dimen>
+
+    <item name="shine_width" format="float" type="dimen">9</item>
+
+    <item name="circle_blank_angle" format="float" type="dimen">60</item>
+    <item name="arc_blank_angle" format="float" type="dimen">290</item>
+
+
+    <dimen name="t_adjust_outside_radio">330dp</dimen>
+    <dimen name="t_adjust_outside_stroke">2dp</dimen>
+    <dimen name="t_adjust_inside_radio">284dp</dimen>
+    <dimen name="t_adjust_inside_stroke">34dp</dimen>
+</resources>
