@@ -14,13 +14,13 @@
     <dimen name="next_distance_margin_top">5dp</dimen>
     <dimen name="nav_icon_size">44dp</dimen>
 
-    <dimen name="circle_margin_right">130dp</dimen>
-    <dimen name="circle_outside_radius">70dp</dimen>
-    <dimen name="circle_outside_stroke_width">5dp</dimen>
+    <dimen name="circle_margin_right">126dp</dimen>
+    <dimen name="circle_outside_radius">66dp</dimen>
+    <dimen name="circle_outside_stroke_width">4dp</dimen>
 
     <dimen name="arc_outside_radius">604dp</dimen>
 
-    <item name="circle_blank_angle" format="float" type="dimen">50</item>
+    <item name="circle_blank_angle" format="float" type="dimen">15</item>
     <item name="arc_blank_angle" format="float" type="dimen">290</item>
 
 
