@@ -3,12 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentEnd="true"
+    android:gravity="center_horizontal"
     tools:context="com.texchi.car.widget.MainActivity">
 
-    <com.texchi.car.widget.TBarView
-        android:id="@+id/barView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true" />
+    <!--<com.texchi.car.widget.TBarView-->
+        <!--android:id="@+id/barView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<com.texchi.car.widget.TVolumeBar-->
+        <!--android:id="@+id/tVolumeBar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
 </RelativeLayout>

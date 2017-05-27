@@ -27,4 +27,17 @@
     <dimen name="t_adjust_outside_stroke">2dp</dimen>
     <dimen name="t_adjust_inside_radio">284dp</dimen>
     <dimen name="t_adjust_inside_stroke">34dp</dimen>
+
+    <!-- float volume bar-->
+    <dimen name="current_p_width">8dp</dimen>
+    <dimen name="current_p_height">20dp</dimen>
+    <dimen name="volume_progress_width">200dp</dimen>
+    <dimen name="volume_bar_width">250dp</dimen>
+    <dimen name="volume_bar_height">48dp</dimen>
+    <dimen name="volume_bar_text_size">26sp</dimen>
+    <dimen name="volume_bar_text_margin_end">14dp</dimen>
+    <dimen name="volume_bar_mute_margin_end">10dp</dimen>
+    <dimen name="volume_bar_mute_img_size">36dp</dimen>
+
+
 </resources>

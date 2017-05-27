@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/volume_bar_width"
+    android:layout_height="@dimen/volume_bar_height">
+
+    <com.texchi.car.widget.VolumeProgressBar
+        android:id="@+id/progressbar"
+        style="@style/StyleVolumeBar"
+        android:layout_width="@dimen/volume_progress_width"
+        android:layout_height="@dimen/current_p_height"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/volumeText"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/progressbar"
+        android:layout_marginEnd="@dimen/volume_bar_text_margin_end"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/volume_bar_text_size"
+        />
+
+    <ImageView
+        android:id="@+id/muteImg"
+        android:layout_width="@dimen/volume_bar_mute_img_size"
+        android:layout_height="@dimen/volume_bar_mute_img_size"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/progressbar"
+        android:layout_marginEnd="@dimen/volume_bar_mute_margin_end"
+        android:src="@drawable/no_sounds"/>
+
+
+</RelativeLayout>
