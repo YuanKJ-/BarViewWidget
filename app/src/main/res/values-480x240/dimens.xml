@@ -28,4 +28,8 @@
     <dimen name="t_adjust_outside_stroke">2dp</dimen>
     <dimen name="t_adjust_inside_radio">284dp</dimen>
     <dimen name="t_adjust_inside_stroke">34dp</dimen>
+
+
+    <dimen name="ancs_view_height">48dp</dimen>
+    <dimen name="ancs_text_size">30sp</dimen>
 </resources>

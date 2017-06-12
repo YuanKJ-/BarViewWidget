@@ -6,6 +6,19 @@
     android:gravity="center_horizontal"
     tools:context="com.texchi.car.widget.MainActivity">
 
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<com.texchi.car.widget.TipTextSwitcher-->
+            <!--android:id="@+id/test_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textAlignment="center"-->
+            <!--android:inAnimation="@android:anim/slide_in_left"-->
+            <!--android:outAnimation="@android:anim/slide_out_right"-->
+            <!--&gt;-->
+        <!--</com.texchi.car.widget.TipTextSwitcher>-->
+    <!--</FrameLayout>-->
     <!--<com.texchi.car.widget.TBarView-->
         <!--android:id="@+id/barView"-->
         <!--android:layout_width="wrap_content"-->
