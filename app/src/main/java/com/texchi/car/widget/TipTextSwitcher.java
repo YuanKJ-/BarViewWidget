@@ -18,7 +18,8 @@ import java.util.List;
 public class TipTextSwitcher extends TextSwitcher implements ViewSwitcher.ViewFactory, View.OnLayoutChangeListener {
     private static final String TAG = "TipTextSwitcher";
 
-    private int index = 0;
+    private int allIndex = 0; //记录当前句子总共播放了多少行
+    private int index = 0; //记录切割后的数据播放到第几行
     private long time = 2000;
     private Context mContext;
     private Handler mHandler;
@@ -63,6 +64,8 @@ public class TipTextSwitcher extends TextSwitcher implements ViewSwitcher.ViewFa
 
     public void setResourcesText(String text) {
         mText = text;
+        // 重置总共播放行数
+        allIndex = 0;
         stop();
         resources = null;
         updateAndSplit();
@@ -102,8 +105,9 @@ public class TipTextSwitcher extends TextSwitcher implements ViewSwitcher.ViewFa
     }
 
     private void next() {
-        index = index + 1;
-        if (index > resources.size() - 1) {
+        allIndex++;
+        index++;
+        if (index > resources.size() - 1 || allIndex > 2) {
             //已结束,调用onComplete
             onComplete();
         } else {
@@ -114,14 +118,18 @@ public class TipTextSwitcher extends TextSwitcher implements ViewSwitcher.ViewFa
 
     private void updateText() {
         if (index < resources.size()) {
-            this.setText(resources.get(index).getText());
+            String text = resources.get(index).getText();
+            if (allIndex >= 2) {
+                text = text + "........";
+            }
+            this.setText(text);
         } else {
             this.setText("");
         }
     }
 
     private List<TextResources> splitText(String text,int sIndex, int width) {
-        List<TextResources> list = new ArrayList<>();
+        List<TextResources> list = new ArrayList<TextResources>();
 
         int startIndex = 0;
         int endIndex = 0;

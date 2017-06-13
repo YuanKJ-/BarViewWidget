@@ -1,20 +1,10 @@
 package com.texchi.car.widget;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.widget.TextSwitcher;
-import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -45,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private Handler handler = new Handler();
-    private AncsUtils ancsUtils;
+    private AncsViewUtils ancsViewUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        textSwitcher = (TipTextSwitcher) findViewById(R.id.test_text);
 
-        ancsUtils = new AncsUtils(getApplicationContext());
-        ancsUtils.setText("textView如果想要强制换行的话,必须先把TextView显示方式修改为多行,然后才有换行一说。 方法一般用两种,一种是在字符串里加入“\\n”,另外一种就是把TextView");
+        ancsViewUtils = new AncsViewUtils(getApplicationContext());
+        ancsViewUtils.setText("If you want to force a line break, you have to change the display to multiple lines before you have a line break.如果想要强制换行的话必须先把显示方式修改为多行,然后才有换行一说。 方法一般用两种,一种是在字符串里加入“\\n”,另外一种");
 //        FloatTips floatTips = new FloatTips(this);
 //        floatTips.setGravity(FloatTips.TOP);
 //        floatTips.setText("呵呵呵呵呵呵呵呵呵呵");
@@ -106,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 //            textSwitcher.setResources(resources);
 //            floatView.show();
 //            textSwitcher.start();
-            ancsUtils.setText("不过在项目实践上发现了这个方法存在一些问题。当字符串存在字母数字时，就会有1-2像素的误差。也正是这个误差，导致代码上判断换行错误，使得界面上显示出错。\\n" +
+            ancsViewUtils.setText("不过在项目实践上发现了这个方法存在一些问题。当字符串存在字母数字时，就会有1-2像素的误差。也正是这个误差，导致代码上判断换行错误，使得界面上显示出错。\\n" +
                     "\\n" +
                     "为了解决这个问题，搜到了这篇文章 戳我\\n" +
                     "\\n" +
@@ -127,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            ancsUtils.setText("不过在项目实践上发现了这个方法存在一些问题。当字符串存在字母数字时，就会有1-2像素的误差。也正是这个误差，导致代码上判断换行错误，使得界面上显示出错。\\n" +
+            ancsViewUtils.setText("不过在项目实践上发现了这个方法存在一些问题。当字符串存在字母数字时，就会有1-2像素的误差。也正是这个误差，导致代码上判断换行错误，使得界面上显示出错。\\n" +
                     "\\n" +
                     "为了解决这个问题，搜到了这篇文章 戳我\\n" +
                     "\\n" +

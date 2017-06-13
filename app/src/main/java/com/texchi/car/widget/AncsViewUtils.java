@@ -8,16 +8,16 @@ import android.view.WindowManager;
 /**
  * Created by ykj on 17/6/9.
  */
-public class AncsUtils implements TipTextSwitcher.OnCompleteListener {
-    private static final String TAG = "AncsUtils";
+public class AncsViewUtils implements TipTextSwitcher.OnCompleteListener {
+    private static final String TAG = "AncsViewUtils";
 
-    private final static long STAY_TIME = 2600;
+    private final static long STAY_TIME = 3600;
 
     private Context mContext;
     private FloatView mFloatView;
     private TipTextSwitcher mTextSwitcher;
 
-    public AncsUtils(Context context) {
+    public AncsViewUtils(Context context) {
         mContext = context;
         LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflate.inflate(R.layout.ancs_view, null);
