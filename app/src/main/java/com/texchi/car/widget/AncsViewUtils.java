@@ -33,10 +33,11 @@ public class AncsViewUtils implements TipTextSwitcher.OnCompleteListener {
 
     }
 
-    public void setText(final String text) {
+    public void setText(String text) {
         mTextSwitcher.stop();
         mFloatView.hide();
         //设置resource
+        text = text.replace("\n", "");
         mTextSwitcher.setResourcesText(text);
         mFloatView.show();
     }
