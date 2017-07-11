@@ -6,9 +6,5 @@
     android:layout_alignParentEnd="true"
     tools:context="com.texchi.car.widget.MainActivity">
 
-    <com.texchi.car.widget.TBarView
-        android:id="@+id/barView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
