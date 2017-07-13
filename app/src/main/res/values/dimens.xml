@@ -27,4 +27,25 @@
     <dimen name="t_adjust_outside_stroke">2dp</dimen>
     <dimen name="t_adjust_inside_radio">284dp</dimen>
     <dimen name="t_adjust_inside_stroke">34dp</dimen>
+
+
+    <dimen name="t_number_layout_height">95dp</dimen>
+    <dimen name="t_number_view_width">300dp</dimen>
+    <dimen name="t_number_view_height">60dp</dimen>
+    <dimen name="t_number_view_margin_top">10dp</dimen>
+    <dimen name="t_number_item_width">80dp</dimen>
+    <dimen name="t_number_selected_text_size">36sp</dimen>
+    <dimen name="t_number_unselected_text_size">26sp</dimen>
+    <dimen name="t_number_image_height">22dp</dimen>
+    <dimen name="t_number_triangle_image_size">18dp</dimen>
+    <dimen name="t_number_title_margin_top">26dp</dimen>
+    <dimen name="t_number_title_text_size">30sp</dimen>
+    <dimen name="t_number_input_margin_top">10dp</dimen>
+    <dimen name="t_number_input_text_size">36sp</dimen>
+    <dimen name="t_number_line_margin">33dp</dimen>
+    <dimen name="t_number_line_margin_top">3dp</dimen>
+
+
+
+
 </resources>

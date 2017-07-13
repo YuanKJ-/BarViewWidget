@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/t_number_title_margin_top"
+        android:includeFontPadding="false"
+        android:textColor="@color/number_input_title"
+        android:textSize="@dimen/t_number_title_text_size"
+        android:text="@string/number_input_title"
+        />
+
+    <TextView
+        android:id="@+id/input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/t_number_input_margin_top"
+        android:includeFontPadding="false"
+        android:textColor="@color/value_text_color"
+        android:textSize="@dimen/t_number_input_text_size"
+        android:text="@string/input_cursor"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/t_number_line_margin_top"
+        android:layout_marginLeft="@dimen/t_number_line_margin"
+        android:layout_marginRight="@dimen/t_number_line_margin"
+        android:background="@color/value_text_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/t_number_layout_height">
+        <com.texchi.car.widget.NumberInputView
+            android:id="@+id/recycler_view"
+            android:layout_width="@dimen/t_number_view_width"
+            android:layout_height="@dimen/t_number_view_height"
+            android:layout_marginTop="@dimen/t_number_view_margin_top"
+            android:layout_centerHorizontal="true">
+
+        </com.texchi.car.widget.NumberInputView>
+        <View
+            android:layout_width="@dimen/t_number_view_width"
+            android:layout_height="match_parent"
+            android:background="@drawable/number_input_shadow"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:layout_width="@dimen/t_number_triangle_image_size"
+            android:layout_height="@dimen/t_number_triangle_image_size"
+            android:src="@drawable/keyboard_selected"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
+
